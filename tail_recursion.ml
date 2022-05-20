@@ -1,8 +1,4 @@
-(* Question 1 *)
-(* TODO: Write your own tests for the fact function.
-         Remember that you should NOT test cases for n < 0.
-*)
-(* TODO: Correct these tests for the fact function. *)
+
 let fact_tests = [
   (0, 1.);
   (1, 1.);
@@ -13,9 +9,7 @@ let fact_tests = [
 ]
 ;;
 
-(* TODO: Correct this implementation so that it compiles and returns
-         the correct answers.
-*)
+
 let rec fact (n: int): float =
   match n with
   | 0 -> 1. 
@@ -23,10 +17,7 @@ let rec fact (n: int): float =
 ;;
 
 
-(* TODO: Write your own tests for the binomial function.
-         See the provided tests for fact, above, for how to write test cases.
-         Remember that we assume that  n >= k >= 0; you should not write test cases where this assumption is violated.
-*)
+
 let binomial_tests = [
   (* Your test cases go here. Correct the incorrect test cases for the function. *)
   ((0, 0), 1.);
@@ -44,9 +35,7 @@ let binomial_tests = [
 ]
 ;;
 
-(* TODO: Correct this implementation so that it compiles and returns
-         the correct answers.
-*)
+
 let binomial (n: int) (k: int): float =
   if n < 0
   then domain ()
@@ -56,7 +45,7 @@ let binomial (n: int) (k: int): float =
 ;;
 
 
-(* TODO: Write a good set of tests for distance. *)
+
 let distance_tests = [
     (* Your test cases go here *)
   (((0, 0), (0, 0)), 0.);
@@ -68,9 +57,7 @@ let distance_tests = [
 ]
 ;;
 
-(* TODO: Correct this implementation so that it compiles and returns
-         the correct answers.
-*)
+
 let distance ((x1, y1): (int * int)) ((x2, y2): (int * int)) : float =
   let dx = x2 - x1 in
   let dy = y2 - y1 in
@@ -78,9 +65,7 @@ let distance ((x1, y1): (int * int)) ((x2, y2): (int * int)) : float =
 ;;
 
 
-(* Question 2: is_prime *)
 
-(* TODO: Write a good set of tests for is_prime. *)
 let is_prime_tests = [
   (2, true);
   (3, true);
@@ -95,9 +80,7 @@ let is_prime_tests = [
 ]
 ;;
 
-(* TODO: Correct this implementation so that it compiles and returns
-         the correct answers.
-*)
+
 let is_prime (n: int): bool =
   if n <= 1
   then domain()
@@ -114,10 +97,6 @@ let is_prime (n: int): bool =
          
 
 
-(* Question 3: Riemann Zeta function 
-    Implement the `approx_zeta` function.
-    You do not need to modify any other parts inside the `zeta` function
-*)
 
 let zeta_tests = [
   (3., 1.20205690314079017);
@@ -144,9 +123,7 @@ let zeta (k: float) : float =
 ;;
 
 
-(* Question 4: Fibonacci*)
 
-(* TODO: Write a good set of tests for fib_tl. *)
 let fib_tl_tests = [
   (0, 1);
   (1, 1);
@@ -157,7 +134,7 @@ let fib_tl_tests = [
   (6, 13);
 ]
 
-(* TODO: Implement a tail-recursive helper fib_aux. *)
+
 let rec fib_aux n a b = match n with
   |0 -> a
   |1 -> b
@@ -165,7 +142,7 @@ let rec fib_aux n a b = match n with
 ;;
 
 
-(* TODO: Implement fib_tl using fib_aux. *)
+
 let fib_tl n =
   fib_aux n 1 1
 ;;
