@@ -1,6 +1,6 @@
-(* Section 1 : Lists *)
+(* Lists *)
 
-(* Question 1.1 : Most common element of *sorted* list *)
+(* Most common element of *sorted* list *)
 
 let mode_tests: (int list * int) list = [
   ([1], 1);
@@ -32,7 +32,7 @@ let mode (l: 'a list) : 'a = match l with
 
 
 
-(* Question 1.2 : Most common consecutive pairing *)
+(* Most common consecutive pairing *)
 
 let pair_mode_tests: (int list * (int * int) ) list = [
   ([1;2;3;4;5], (1,2));
@@ -57,7 +57,7 @@ let pair_mode (l: 'a list) : 'a * 'a =
 
 
 
-(* Section 2 : Custom data types *)
+(* Custom data types *)
 
 let convert_time ((from_unit, val_) : time_unit value) to_unit : time_unit value =
   match (from_unit, to_unit) with
@@ -110,7 +110,7 @@ let dist_traveled time ((speed_unit, speed_val) : speed_unit value) : dist_unit 
 
 
 
-(* Section 3 : recursive data types/induction *)
+(* recursive data types/induction *)
 
 let passes_da_vinci_tests : (tree * bool) list = [ 
   (Leaf, true);
