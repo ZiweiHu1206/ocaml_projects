@@ -6,11 +6,8 @@ let union_fvs es =
   List.fold_left (fun acc exp -> union acc (free_variables exp)) [] es
 ;;
 
-(* TODO: Write a good set of tests for unused_vars. *)
+(* tests for unused_vars. *)
 let unused_vars_tests = [
-  (* An example test case.
-     Note that you are *only* required to write tests for Rec, Fn, and Apply!
-  *)
   (Let ("x", I 1, I 5), ["x"]);
   (Rec ("x", Int, I 5), ["x"]);
   (Rec ("x", Int, Var "x"), [] );
@@ -24,7 +21,7 @@ let unused_vars_tests = [
 
 
 
-(* TODO: Implement the missing cases of unused_vars. *)
+(* Implement the missing cases of unused_vars. *)
 let rec unused_vars =
   function
   | Var _ | I _ | B _ -> []
@@ -72,14 +69,8 @@ let rec unused_vars =
 
 
 
-(* TODO: Write a good set of tests for subst. *)
-(* Note: we've added a type annotation here so that the compiler can help
-   you write tests of the correct form. *)
+
 let subst_tests : (((exp * name) * exp) * exp) list = [
-  (* An example test case. If you have trouble writing test cases of the
-     proper form, you can try copying this one and modifying it.
-     Note that you are *only* required to write tests for Rec, Fn, and Apply!
-  *)
   (((I 1, "x"), (* [1/x] *)
     (* let y = 2 in y + x *)
     Let ("y", I 2, Primop (Plus, [Var "y"; Var "x"]))),
@@ -128,7 +119,6 @@ let subst_tests : (((exp * name) * exp) * exp) list = [
 ];;
 
 
-(* TODO: Implement the missing cases of subst. *)
 let rec subst ((e', x) as s) exp =
   match exp with
   | Var y ->
@@ -205,11 +195,8 @@ let subst_list subs exp =
   List.fold_left (fun exp sub -> subst sub exp) exp subs
 
     
-(* TODO: Write a good set of tests for eval. *)
+
 let eval_tests = [
-  (* An example test case.
-     Note that you are *only* required to write tests for Rec and Apply!
-  *)
   (Let ("x", I 1, Primop (Plus, [Var "x"; I 5])), I 6);
   (Rec ("x", Int, Primop(Plus, [I 1; I 5])), I 6); 
   (Rec ("x", Int, Let ("y", I 1, Primop (Plus, [Var "y"; I 5]))), I 6);
@@ -221,7 +208,7 @@ let eval_tests = [
 ]
 
 
-(* TODO: Implement the missing cases of eval. *)
+(* Implement the missing cases of eval. *)
 let rec eval exp =
   match exp with
   (* Values evaluate to themselves *)
@@ -284,11 +271,8 @@ let rec eval exp =
 
 
 
-(* TODO: Write a good set of tests for infer. *)
+(* Write a good set of tests for infer. *)
 let infer_tests = [
-  (* An example test case.
-     Note that you are *only* required to write tests for Rec, Fn, and Apply!
-  *)
   (([("x", Int)], Var "x"), Int);
   (([], Rec("x", Int, Var "x")), Int); 
   (([], ex1), Arrow ([Int; Int], Int)); 
@@ -301,7 +285,7 @@ let infer_tests = [
     (Apply (Var "x", [I 1; I 5]))), Int) 
 ]
 
-(* TODO: Implement the missing cases of infer. *)
+
 let rec infer ctx e =
   match e with
   | Var x ->
@@ -369,7 +353,7 @@ and check ctx exps tps result =
 
            
 
-(* TODO: Implement type unification. *)
+
 let unify : utp -> utp -> utp UTVarMap.t =
   let rec unify (substitution : utp UTVarMap.t) (t1 : utp) (t2 : utp) : utp UTVarMap.t =
     match t1, t2 with
