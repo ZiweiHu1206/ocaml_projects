@@ -1,5 +1,5 @@
 (* ------------------------------------------------------------------------*)
-(* Q1 : Money in the Bank *)
+(* Money in the Bank *)
 (* ------------------------------------------------------------------------*)
 
 let open_account (initial_pass: passwd) : bank_account =
@@ -39,19 +39,9 @@ let open_account (initial_pass: passwd) : bank_account =
 
 
 (* ------------------------------------------------------------------------*)
-(* Q2 : I Want to Travel *)
+(* I Want to Travel *)
 (* ------------------------------------------------------------------------*)
-(* TODO: Write some tests for neighbours. Consider creating a graph first,
- and then writing your tests based on it *)
 
-(* Reminder: If a test case requires multiple arguments, use a tuple:
-let myfn_with_2_args_tests = [
-  ((arg1, arg1), (expected_output))
-]
-*)
-
-(* We've added a type annotation here so that the compiler can help
-   you write tests of the correct form. *)
 let neighbours_tests: ((string graph * string) * (string * weight) list) list = [
   ( ({nodes = ["Vancouver"; "Richmond"; "Calgary"];
       edges = [ ("Vancouver","Richmond",5);("Vancouver","Calgary",50)]},
@@ -68,7 +58,7 @@ let neighbours_tests: ((string graph * string) * (string * weight) list) list = 
 
 
 
-(* TODO: Implement neighbours. *)
+(* Implement neighbours. *)
 let neighbours (g: 'a graph) (vertex: 'a) : ('a * weight) list = 
   List.fold_left ( fun output_list (v, neighbour, cost) -> if v = vertex then
                      (neighbour, cost)::output_list else
@@ -78,7 +68,7 @@ let neighbours (g: 'a graph) (vertex: 'a) : ('a * weight) list =
 
 
 
-(* TODO: Implement find_path. *)
+(* Implement find_path. *)
 let find_path (g: 'a graph) (a: 'a) (b: 'a) : ('a list * weight) =
   
   let rec aux_node (node: 'a * weight) (visited : 'a list) acc: ('a list * weight) =
@@ -101,7 +91,7 @@ let find_path (g: 'a graph) (a: 'a) (b: 'a) : ('a list * weight) =
 
 
 
-(* TODO: Implement find_path'. *)
+(* Implement find_path'. *)
 let find_path' (g: 'a graph) (a: 'a) (b: 'a) : ('a list * weight) = 
   
   let rec aux_node (node: 'a * weight) (visited : 'a list) fc sc : ('a list * weight)=
@@ -122,7 +112,7 @@ let find_path' (g: 'a graph) (a: 'a) (b: 'a) : ('a list * weight) =
 
 
 
-(* TODO: Implement find_all_paths *)
+(* Implement find_all_paths *)
 let find_all_paths (g: 'a graph) (a: 'a) (b: 'a) : ('a list * weight) list =
   
   let rec aux_node (node: 'a * weight) (visited : 'a list) acc: ('a list * weight) list =
@@ -145,7 +135,7 @@ let find_all_paths (g: 'a graph) (a: 'a) (b: 'a) : ('a list * weight) list =
 
 
 
-(* TODO: Implement find_longest_path *)
+(* Implement find_longest_path *)
 let find_longest_path (g: 'a graph) (a: 'a) (b: 'a) : ('a list * weight) option =
   
   let all_paths = find_all_paths g a b in 
